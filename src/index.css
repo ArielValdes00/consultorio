@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@theme {
+  /* Breakpoint propio: coincide con el que usaba useIsDesktop() */
+  --breakpoint-desktop: 860px;
+
+  /* Colores */
+  --color-bg: #F5F6F2;
+  --color-surface: #FFFFFF;
+  --color-surface-sunken: #EEEFE9;
+  --color-ink: #1E2A22;
+  --color-ink-soft: #4B5850;
+  --color-muted: #7C887F;
+  --color-border: #E1E4DA;
+
+  --color-primary: #3F6B52;
+  --color-primary-dark: #2C4D3B;
+  --color-primary-soft: #E3EBE4;
+
+  --color-accent: #E08A3C;
+  --color-accent-soft: #FBE9D4;
+
+  --color-status-pendiente: #C9A227;
+  --color-status-pendiente-soft: #FBF3D9;
+  --color-status-atendido: #3F6B52;
+  --color-status-atendido-soft: #E3EBE4;
+  --color-status-cancelado: #C1533D;
+  --color-status-cancelado-soft: #F8E2DC;
+
+  /* Tipografía */
+  --font-serif: "Newsreader", Georgia, serif;
+  --font-sans: "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Radios (sobreescriben la escala sm/md/lg por defecto de Tailwind) */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+
+  /* Ancho del "shell" mobile */
+  --container-shell: 480px;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-surface-sunken);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+
+  #root {
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    background: var(--color-surface-sunken);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--color-primary-soft);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+@layer components {
+  /* Listas de tarjetas (turnos, pacientes): 1 columna en celular,
+     varias columnas cuando hay ancho de sobra en escritorio. */
+  .card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @media (min-width: 860px) {
+    .card-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 12px;
+    }
+  }
+}
