@@ -148,6 +148,16 @@ function seed(): DB {
     haceUnMes.setDate(haceUnMes.getDate() - 30)
     const haceDosMeses = new Date(hoy)
     haceDosMeses.setDate(haceDosMeses.getDate() - 60)
+    const haceTresMeses = new Date(hoy)
+    haceTresMeses.setDate(haceTresMeses.getDate() - 90)
+    const haceCuatroMeses = new Date(hoy)
+    haceCuatroMeses.setDate(haceCuatroMeses.getDate() - 120)
+    const haceCincoMeses = new Date(hoy)
+    haceCincoMeses.setDate(haceCincoMeses.getDate() - 150)
+    const haceUnaSemana = new Date(hoy)
+    haceUnaSemana.setDate(haceUnaSemana.getDate() - 6)
+    const haceDiezDias = new Date(hoy)
+    haceDiezDias.setDate(haceDiezDias.getDate() - 10)
 
     const atenciones: Atencion[] = [
         {
@@ -209,6 +219,102 @@ function seed(): DB {
             monto: 12000,
             metodoPago: 'transferencia',
             tieneObraSocial: false,
+        },
+        {
+            id: 'ate_6',
+            pacienteId: 'pac_3',
+            turnoId: 'tur_prev_4',
+            dentistaId: 'den_2',
+            fecha: iso(haceUnaSemana, 10, 30),
+            notasClinicas: 'Colocación de empaste en pieza 14. Sin complicaciones.',
+            receta: '',
+            monto: 18000,
+            metodoPago: 'efectivo',
+            tieneObraSocial: true,
+        },
+        {
+            id: 'ate_7',
+            pacienteId: 'pac_1',
+            turnoId: 'tur_prev_5',
+            dentistaId: 'den_1',
+            fecha: iso(haceDiezDias, 14, 0),
+            notasClinicas: 'Control de ortodoncia, ajuste de brackets.',
+            receta: '',
+            monto: 22000,
+            metodoPago: 'otro',
+            tieneObraSocial: false,
+        },
+        {
+            id: 'ate_8',
+            pacienteId: 'pac_2',
+            turnoId: 'tur_prev_6',
+            dentistaId: 'den_1',
+            fecha: iso(haceTresMeses, 9, 15),
+            notasClinicas: 'Limpieza y control general. Buen estado de las encías.',
+            receta: '',
+            monto: 14000,
+            metodoPago: 'efectivo',
+            tieneObraSocial: false,
+        },
+        {
+            id: 'ate_9',
+            pacienteId: 'pac_3',
+            turnoId: 'tur_prev_7',
+            dentistaId: 'den_2',
+            fecha: iso(haceTresMeses, 15, 45),
+            notasClinicas: 'Extracción de pieza 38. Se indica reposo y dieta blanda.',
+            receta: 'Ibuprofeno 600mg cada 8hs por 3 días.',
+            monto: 38000,
+            metodoPago: 'transferencia',
+            tieneObraSocial: true,
+        },
+        {
+            id: 'ate_10',
+            pacienteId: 'pac_1',
+            turnoId: 'tur_prev_8',
+            dentistaId: 'den_2',
+            fecha: iso(haceCuatroMeses, 11, 30),
+            notasClinicas: 'Consulta de urgencia por dolor. Diagnóstico: sensibilidad dental, se indica pasta desensibilizante.',
+            receta: '',
+            monto: 9000,
+            metodoPago: 'efectivo',
+            tieneObraSocial: true,
+        },
+        {
+            id: 'ate_11',
+            pacienteId: 'pac_2',
+            turnoId: 'tur_prev_9',
+            dentistaId: 'den_1',
+            fecha: iso(haceCuatroMeses, 17, 0),
+            notasClinicas: 'Tratamiento de conducto - sesión final. Se coloca corona provisoria.',
+            receta: 'Ibuprofeno 400mg cada 8hs si hay dolor.',
+            monto: 41000,
+            metodoPago: 'transferencia',
+            tieneObraSocial: false,
+        },
+        {
+            id: 'ate_12',
+            pacienteId: 'pac_3',
+            turnoId: 'tur_prev_10',
+            dentistaId: 'den_1',
+            fecha: iso(haceCincoMeses, 10, 0),
+            notasClinicas: 'Blanqueamiento dental, sesión única.',
+            receta: '',
+            monto: 26000,
+            metodoPago: 'otro',
+            tieneObraSocial: true,
+        },
+        {
+            id: 'ate_13',
+            pacienteId: 'pac_1',
+            turnoId: 'tur_prev_11',
+            dentistaId: 'den_2',
+            fecha: iso(haceCincoMeses, 16, 30),
+            notasClinicas: 'Control post operatorio, buena cicatrización.',
+            receta: '',
+            monto: 8000,
+            metodoPago: 'efectivo',
+            tieneObraSocial: true,
         },
     ]
     return { dentistas, pacientes, turnos, atenciones }
